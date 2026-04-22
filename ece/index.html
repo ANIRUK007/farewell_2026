@@ -646,20 +646,111 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.92r
 </footer>
 
 <script>
-function handleFile(i){document.getElementById('fileName').textContent=i.files[0]?'✓ '+i.files[0].name:'';}
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});});});
-document.getElementById('regForm').addEventListener('submit',function(e){
-  e.preventDefault();let ok=true;
-  [{id:'name',err:'nameErr',t:v=>v.trim().length>1},{id:'roll',err:'rollErr',t:v=>v.trim().length>2}].forEach(({id,err,t})=>{
-    const el=document.getElementById(id),pass=t(el.value);
-    document.getElementById(err).style.display=pass?'none':'block';el.classList.toggle('is-err',!pass);if(!pass)ok=false;});
-  const yr=document.querySelector('input[name="year"]:checked');
-  document.getElementById('yearErr').style.display=yr?'none':'block';if(!yr)ok=false;
-  const ml=document.querySelector('input[name="meal"]:checked');
-  document.getElementById('mealErr').style.display=ml?'none':'block';if(!ml)ok=false;
-  const fi=document.getElementById('screenshot'),fok=fi.files&&fi.files.length>0;
-  document.getElementById('fileErr').style.display=fok?'none':'block';if(!fok)ok=false;
-  if(ok){document.getElementById('regForm').style.display='none';document.getElementById('successPane').style.display='block';document.getElementById('successPane').scrollIntoView({behavior:'smooth'});}
+// ─── PASTE YOUR WEB APP URL HERE (ends in /exec) ─────────
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwWrcfmP_o7LrpBlE2rVzsqmzHI2gegIFKhmI4BBVBH9CuDGJ0zqhysnqqmPZ5N4zBSxQ/exec';
+// ─────────────────────────────────────────────────────────
+
+function handleFile(i) {
+  document.getElementById('fileName').textContent =
+    i.files[0] ? '✓ ' + i.files[0].name : '';
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))
+            ?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+document.getElementById('regForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  // ── 1. Validate all fields ──────────────────────────
+  let ok = true;
+
+  [{ id: 'name', err: 'nameErr', test: v => v.trim().length > 1 },
+   { id: 'roll', err: 'rollErr', test: v => v.trim().length > 2 }
+  ].forEach(({ id, err, test }) => {
+    const el   = document.getElementById(id);
+    const pass = test(el.value);
+    document.getElementById(err).style.display = pass ? 'none' : 'block';
+    el.classList.toggle('is-err', !pass);
+    if (!pass) ok = false;
+  });
+
+  const yr = document.querySelector('input[name="year"]:checked');
+  document.getElementById('yearErr').style.display = yr ? 'none' : 'block';
+  if (!yr) ok = false;
+
+  const ml = document.querySelector('input[name="meal"]:checked');
+  document.getElementById('mealErr').style.display = ml ? 'none' : 'block';
+  if (!ml) ok = false;
+
+  const fi  = document.getElementById('screenshot');
+  const fok = fi.files && fi.files.length > 0;
+  document.getElementById('fileErr').style.display = fok ? 'none' : 'block';
+  if (!fok) ok = false;
+
+  if (!ok) return;
+
+  // ── 2. Loading state ────────────────────────────────
+  const btn        = document.querySelector('.submit-btn');
+  const origText   = btn.textContent;
+  btn.textContent  = 'Submitting…';
+  btn.disabled     = true;
+  btn.style.opacity = '0.7';
+
+  try {
+    // ── 3. Read file as base64 ─────────────────────────
+    const file     = fi.files[0];
+    const fileData = await new Promise((res, rej) => {
+      const reader   = new FileReader();
+      reader.onload  = () => res(reader.result.split(',')[1]);
+      reader.onerror = () => rej(new Error('Could not read file'));
+      reader.readAsDataURL(file);
+    });
+
+    // ── 4. Build JSON payload ──────────────────────────
+    const payload = {
+      dept    : 'ECE',
+      name    : document.getElementById('name').value.trim(),
+      roll    : document.getElementById('roll').value.trim(),
+      year    : yr.value,
+      meal    : ml.value,
+      fileData,
+      fileName: file.name,
+      fileMime: file.type || 'image/jpeg',
+    };
+
+    // ── 5. POST to Apps Script ─────────────────────────
+    const res  = await fetch(SCRIPT_URL, {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify(payload),
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      document.getElementById('regForm').style.display     = 'none';
+      document.getElementById('successPane').style.display = 'block';
+      document.getElementById('successPane')
+              .scrollIntoView({ behavior: 'smooth' });
+    } else if (data.error === 'SOLD_OUT') {
+      alert('Sorry — all seats for ECE are now taken.');
+      btn.textContent  = origText;
+      btn.disabled     = false;
+      btn.style.opacity = '1';
+    } else {
+      throw new Error(data.error || 'Unknown server error');
+    }
+
+  } catch (err) {
+    btn.textContent  = origText;
+    btn.disabled     = false;
+    btn.style.opacity = '1';
+    alert('Submission failed — please try again.\n\n' + err.message);
+  }
 });
 </script>
 </body>
