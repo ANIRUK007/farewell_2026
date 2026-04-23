@@ -99,7 +99,13 @@ nav{position:sticky;top:0;z-index:200;background:var(--ink);
 .v-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink);}
 
 /* info strip */
-.info-row{display:flex;margin-top:2.8rem;border:1px solid var(--blue-ghost);max-width:660px;width:100%;}
+.info-row{
+  display:flex;
+  flex-wrap:wrap;
+}
+.info-cell{
+  flex:1 1 20%;
+}
 .info-cell{flex:1;padding:1.2rem .8rem;border-right:1px solid var(--blue-ghost);text-align:center;}
 .info-cell:last-child{border-right:none}
 .info-val{font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;color:var(--blue);display:block;line-height:1;margin-bottom:.28rem;}
@@ -327,12 +333,13 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.92r
     <p class="hero-desc">Four years of building, breaking, and brilliance.<br>One event to honour it all.</p>
     <a href="#register" class="v-btn blue">Register for Your Pass</a>
 
-    <div class="info-row">
-      <div class="info-cell"><span class="info-val">2026</span><span class="info-key">Batch</span></div>
-      <div class="info-cell"><span class="info-val">Limited</span><span class="info-key">Seats</span></div>
-      <div class="info-cell"><span class="info-val">Veg & NV</span><span class="info-key">Menu</span></div>
-      <div class="info-cell"><span class="info-val">₹ 700</span><span class="info-key">Pass</span></div>
-    </div>
+<div class="info-row">
+  <div class="info-cell"><span class="info-val">2026</span><span class="info-key">Batch</span></div>
+  <div class="info-cell"><span class="info-val">30 Apr</span><span class="info-key">Date</span></div>
+  <div class="info-cell"><span class="info-val">Limited</span><span class="info-key">Seats</span></div>
+  <div class="info-cell"><span class="info-val">Veg & NV</span><span class="info-key">Menu</span></div>
+  <div class="info-cell"><span class="info-val">₹ 700</span><span class="info-key">Pass</span></div>
+</div>
   </div>
 </section>
 
@@ -460,6 +467,17 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.92r
           <input type="text" id="roll" name="roll" placeholder="e.g. 22B81A0501"/>
           <span class="err" id="rollErr">Please enter your roll number</span>
         </div>
+        <div class="form-group">
+  <label class="field-label" for="email">Email ID</label>
+  <input type="text" id="email" name="email" placeholder="your@email.com"/>
+  <span class="err" id="emailErr">Please enter a valid email</span>
+</div>
+
+<div class="form-group">
+  <label class="field-label" for="phone">Phone Number</label>
+  <input type="text" id="phone" name="phone" placeholder="10-digit number"/>
+  <span class="err" id="phoneErr">Please enter a valid phone number</span>
+</div>
         <div class="form-group">
           <label class="field-label" for="branch">Branch</label>
           <div class="select-wrap">
@@ -595,15 +613,18 @@ document.getElementById('regForm').addEventListener('submit', async function (e)
   // ── 1. Validate all fields ──────────────────────────
   let ok = true;
 
-  [{ id: 'name', err: 'nameErr', test: v => v.trim().length > 1 },
-   { id: 'roll', err: 'rollErr', test: v => v.trim().length > 2 }
-  ].forEach(({ id, err, test }) => {
-    const el   = document.getElementById(id);
-    const pass = test(el.value);
-    document.getElementById(err).style.display = pass ? 'none' : 'block';
-    el.classList.toggle('is-err', !pass);
-    if (!pass) ok = false;
-  });
+[
+  { id: 'name',  err: 'nameErr',  test: v => v.trim().length > 1 },
+  { id: 'roll',  err: 'rollErr',  test: v => v.trim().length > 2 },
+  { id: 'email', err: 'emailErr', test: v => /^\S+@\S+\.\S+$/.test(v) },
+  { id: 'phone', err: 'phoneErr', test: v => /^\d{10}$/.test(v) }
+].forEach(({ id, err, test }) => {
+  const el   = document.getElementById(id);
+  const pass = test(el.value);
+  document.getElementById(err).style.display = pass ? 'none' : 'block';
+  el.classList.toggle('is-err', !pass);
+  if (!pass) ok = false;
+});
 
   const br  = document.getElementById('branch');
   const bok = br.value !== '';
@@ -648,6 +669,8 @@ document.getElementById('regForm').addEventListener('submit', async function (e)
       dept    : 'CSE',
       name    : document.getElementById('name').value.trim(),
       roll    : document.getElementById('roll').value.trim(),
+      email   : document.getElementById('email').value.trim(),
+      phone   : document.getElementById('phone').value.trim(),
       branch  : br.value,
       year    : yr.value,
       meal    : ml.value,
