@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>CSE · AIML · AIDS — Farewell 2026</title>
+<title>Important Announcement — Farewell 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600;900&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
   --paper:#eef3fa;
-  --paper2:#dde8f5;
   --ink:#0c1828;
   --blue:#1a3a7a;
   --blue-mid:#2a5298;
@@ -16,207 +15,203 @@
   --blue-pale:#8aaed8;
   --blue-ghost:#c8d8ee;
   --gold:#b8962e;
-  --gold-lt:#d4b45a;
   --cream:#f6f9ff;
+  --red:#8b1a1a;
+  --red-lt:#c4503c;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Cormorant Garamond',serif;
+  overflow-x:hidden;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
 
-/* Paper grain */
 .paper-texture{position:fixed;inset:0;pointer-events:none;z-index:500;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23p)' opacity='0.055'/%3E%3C/svg%3E");
   mix-blend-mode:multiply;}
+
 .vignette{position:fixed;inset:0;pointer-events:none;z-index:499;
   background:radial-gradient(ellipse at center,transparent 50%,rgba(12,24,40,0.3) 100%);}
 
-/* NAV */
-nav{position:sticky;top:0;z-index:200;background:var(--ink);
+nav{
+  position:sticky;top:0;z-index:200;background:var(--ink);
   padding:.75rem 2.5rem;display:flex;align-items:center;justify-content:space-between;
-  border-bottom:2px solid var(--blue-lt);}
+  border-bottom:2px solid var(--blue-lt);
+}
 .nav-brand{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.35em;color:var(--blue-ghost);text-transform:uppercase;}
-.nav-back{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--blue-pale);text-decoration:none;letter-spacing:.1em;transition:color .2s;}
-.nav-back:hover{color:#fff}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:5rem 2rem 4rem;position:relative;overflow:hidden;text-align:center;
-  background:linear-gradient(165deg,#dde8f5 0%,#eef3fa 45%,#e4eef8 100%);}
-
-/* aged blue tint stains */
-.hero::before{content:'';position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 350px 250px at 5% 10%,rgba(26,58,122,.09) 0%,transparent 70%),
-    radial-gradient(ellipse 280px 380px at 95% 85%,rgba(26,58,122,.07) 0%,transparent 70%),
-    radial-gradient(ellipse 500px 120px at 50% 98%,rgba(10,20,60,.06) 0%,transparent 70%);}
-
-/* border frames */
-.hero-frame{position:absolute;inset:1.2rem;pointer-events:none;border:1px solid rgba(74,120,196,.3);}
-.hero-frame::after{content:'';position:absolute;inset:7px;border:1px solid rgba(74,120,196,.14);}
-
-/* CORNERS */
-.corner{position:absolute;width:72px;height:72px;}
-.corner-tl{top:1.2rem;left:1.2rem}
-.corner-tr{top:1.2rem;right:1.2rem;transform:scaleX(-1)}
-.corner-bl{bottom:1.2rem;left:1.2rem;transform:scaleY(-1)}
-.corner-br{bottom:1.2rem;right:1.2rem;transform:scale(-1)}
-
-/* side deco */
-.side-deco{position:absolute;top:50%;transform:translateY(-50%);width:min(160px,11vw);opacity:.18;}
-.side-deco-l{left:0}.side-deco-r{right:0;transform:translateY(-50%) scaleX(-1)}
-
-/* hero content */
-.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
-
-.dept-chip{display:inline-flex;align-items:center;gap:.7rem;
-  font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.5em;color:var(--blue);text-transform:uppercase;margin-bottom:1.8rem;}
-.dept-chip span{display:block;width:45px;height:1px;background:var(--blue-pale);}
-
-.hero-sub{font-family:'Cinzel',serif;font-size:clamp(.6rem,1.6vw,.85rem);
-  letter-spacing:.6em;color:var(--blue-mid);text-transform:uppercase;margin-bottom:.7rem;}
-
-.hero-title{font-family:'Cinzel Decorative',serif;font-weight:700;
-  font-size:clamp(3.2rem,12vw,9.5rem);line-height:.88;color:var(--blue);
-  text-shadow:1px 2px 0 rgba(26,58,122,.18),3px 4px 0 rgba(26,58,122,.07);}
-
-.hero-year{font-family:'Playfair Display',serif;font-style:italic;
-  font-size:clamp(1.4rem,4.5vw,3.5rem);color:var(--blue-lt);letter-spacing:.22em;margin-top:.25rem;}
-
-.rule-wrap{width:100%;max-width:580px;margin:1.6rem auto;}
-
-.hero-desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
-  font-size:clamp(.95rem,2vw,1.25rem);color:var(--blue-mid);max-width:500px;
-  line-height:1.95;letter-spacing:.04em;margin-bottom:2.5rem;}
-
-.btn-pair{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
-
-.v-btn{display:inline-block;font-family:'Cinzel',serif;font-size:clamp(.52rem,1.2vw,.68rem);
-  letter-spacing:.35em;text-transform:uppercase;text-decoration:none;padding:.95rem 2.2rem;
-  border:none;cursor:pointer;position:relative;transition:transform .18s,box-shadow .18s;}
-.v-btn::before{content:'';position:absolute;inset:-5px;border:1px solid currentColor;opacity:.35;}
-.v-btn.blue{background:var(--blue);color:var(--cream);box-shadow:4px 4px 0 var(--ink);}
-.v-btn.blue:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);background:var(--blue-mid);}
-.v-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink);}
-
-/* info strip */
-.info-row{
+main{
+  flex:1;
   display:flex;
-  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  padding:4rem 1.5rem;
+  position:relative;
+  background:linear-gradient(165deg,#dde8f5 0%,#eef3fa 45%,#e4eef8 100%);
 }
-.info-cell{
-  flex:1 1 20%;
+
+main::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 350px 250px at 5% 10%,rgba(26,58,122,.07) 0%,transparent 70%),
+    radial-gradient(ellipse 280px 380px at 95% 85%,rgba(26,58,122,.05) 0%,transparent 70%);
 }
-.info-cell{flex:1;padding:1.2rem .8rem;border-right:1px solid var(--blue-ghost);text-align:center;}
-.info-cell:last-child{border-right:none}
-.info-val{font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;color:var(--blue);display:block;line-height:1;margin-bottom:.28rem;}
-.info-key{font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:.3em;text-transform:uppercase;color:var(--blue-pale);}
 
-/* SECTIONS */
-.section{padding:5.5rem 2rem;position:relative;text-align:center;overflow:hidden;}
+.notice-wrap{
+  position:relative;
+  z-index:1;
+  max-width:680px;
+  width:100%;
+}
+.notice-wrap::before{
+  content:'';position:absolute;inset:-14px;
+  border:1px solid rgba(74,120,196,.25);
+  pointer-events:none;
+}
+.notice-wrap::after{
+  content:'';position:absolute;inset:-24px;
+  border:1px solid rgba(74,120,196,.12);
+  pointer-events:none;
+}
 
-.sec-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.05;}
+.notice-card{
+  background:var(--cream);
+  border:1px solid var(--blue-ghost);
+  padding:3.5rem 3rem;
+  position:relative;
+  text-align:center;
+}
+.notice-card::before{
+  content:'';
+  position:absolute;top:0;left:8%;right:8%;height:3px;
+  background:linear-gradient(90deg,transparent,var(--red-lt),var(--red),var(--red-lt),transparent);
+}
 
-.sec-badge{display:inline-block;font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.45em;
-  text-transform:uppercase;color:var(--blue-mid);padding:.32rem 1.2rem;
-  border:1px solid var(--blue-ghost);margin-bottom:1.4rem;position:relative;}
-.sec-badge::before,.sec-badge::after{content:'◆';position:absolute;top:50%;transform:translateY(-50%);font-size:.36rem;color:var(--gold);}
-.sec-badge::before{left:-.52rem}.sec-badge::after{right:-.52rem}
+.corner{position:absolute;width:60px;height:60px;}
+.corner-tl{top:-1px;left:-1px;}
+.corner-tr{top:-1px;right:-1px;transform:scaleX(-1);}
+.corner-bl{bottom:-1px;left:-1px;transform:scaleY(-1);}
+.corner-br{bottom:-1px;right:-1px;transform:scale(-1);}
 
-.sec-title{font-family:'Playfair Display',serif;font-weight:700;
-  font-size:clamp(1.9rem,5.5vw,3.6rem);line-height:1.12;color:var(--ink);margin-bottom:1rem;}
-.sec-title em{font-style:italic;color:var(--blue);}
+.notice-eyebrow{
+  font-family:'Cinzel',serif;
+  font-size:.58rem;
+  letter-spacing:.5em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:1.8rem;
+  display:inline-flex;
+  align-items:center;
+  gap:.8rem;
+}
+.notice-eyebrow span{display:block;width:40px;height:1px;background:rgba(139,26,26,.35);}
 
-.sec-body{font-size:clamp(.95rem,1.9vw,1.15rem);line-height:1.95;color:var(--blue-mid);
-  max-width:540px;margin:0 auto 2.4rem;font-weight:300;letter-spacing:.03em;}
+.icon-ring{
+  width:72px;height:72px;
+  border-radius:50%;
+  border:1.5px solid var(--red);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 2rem;
+  position:relative;
+}
+.icon-ring::before{
+  content:'';
+  position:absolute;inset:-5px;
+  border-radius:50%;
+  border:1px solid rgba(139,26,26,.25);
+}
 
-.div-rule{display:block;width:100%;max-width:680px;margin:0 auto;overflow:visible;}
+.notice-title{
+  font-family:'Cinzel Decorative',serif;
+  font-weight:700;
+  font-size:clamp(1.1rem,3.5vw,1.6rem);
+  color:var(--ink);
+  line-height:1.3;
+  margin-bottom:.6rem;
+}
 
-/* FORM */
-#register{scroll-margin-top:55px}
+.notice-subtitle{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:clamp(1rem,2.5vw,1.3rem);
+  color:var(--red);
+  margin-bottom:2rem;
+}
 
-.form-outer{max-width:680px;margin:0 auto;position:relative;}
-.form-outer::before{content:'';position:absolute;inset:-12px;border:1px solid var(--blue-ghost);pointer-events:none;}
-.form-outer::after{content:'';position:absolute;inset:-21px;border:1px solid rgba(74,120,196,.12);pointer-events:none;}
+.rule{width:100%;margin:0 auto 2rem;}
 
-.form-inner{background:var(--cream);border:1px solid var(--blue-ghost);padding:3.5rem 3rem;position:relative;}
-.form-inner::before{content:'';position:absolute;top:0;left:8%;right:8%;height:3px;
-  background:linear-gradient(90deg,transparent,var(--blue-lt),var(--gold-lt),var(--blue-lt),transparent);}
+.notice-body{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,2vw,1.18rem);
+  line-height:2;
+  color:var(--blue-mid);
+  font-weight:300;
+  letter-spacing:.03em;
+  margin-bottom:2rem;
+  text-align:left;
+}
+.notice-body p+p{margin-top:1.2rem;}
 
-/* watermark behind form */
-.form-watermark{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.04;z-index:0;}
-.form-inner>*:not(.form-watermark){position:relative;z-index:1;}
+.refund-box{
+  border:1px solid rgba(139,26,26,.2);
+  background:rgba(139,26,26,.03);
+  padding:1.4rem 1.8rem;
+  margin:2rem 0;
+  position:relative;
+  text-align:left;
+}
+.refund-box::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;
+  width:3px;
+  background:linear-gradient(to bottom,var(--red-lt),var(--red));
+}
+.refund-label{
+  font-family:'Cinzel',serif;
+  font-size:.52rem;
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:.5rem;
+  display:block;
+}
+.refund-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;
+  color:var(--ink);
+  line-height:1.8;
+}
 
-.form-heading{text-align:center;margin-bottom:3rem;}
-.form-heading h2{font-family:'Cinzel Decorative',serif;font-size:clamp(1.3rem,3.5vw,2rem);color:var(--blue);margin-bottom:.55rem;font-weight:400;}
-.form-heading p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--blue-pale);letter-spacing:.1em;}
+.notice-sign{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:1rem;
+  color:var(--blue-pale);
+  letter-spacing:.12em;
+  margin-top:2rem;
+  padding-top:1.5rem;
+  border-top:1px solid var(--blue-ghost);
+  text-align:center;
+}
 
-.form-group{margin-bottom:2rem;}
-
-.field-label{display:block;font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.35em;
-  text-transform:uppercase;color:var(--blue-mid);margin-bottom:.48rem;}
-
-input[type="text"],select{width:100%;background:transparent;border:none;
-  border-bottom:1.5px solid var(--blue-pale);border-radius:0;color:var(--ink);
-  font-family:'Cormorant Garamond',serif;font-size:1.12rem;padding:.58rem .2rem;outline:none;
-  transition:border-color .25s;letter-spacing:.04em;-webkit-appearance:none;appearance:none;}
-input[type="text"]:focus,select:focus{border-bottom-color:var(--blue);border-bottom-width:2px;}
-input[type="text"]::placeholder{color:var(--blue-ghost);font-style:italic;}
-
-.select-wrap{position:relative;}
-.select-wrap::after{content:'';position:absolute;right:.5rem;top:50%;transform:translateY(-30%);
-  width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;
-  border-top:5px solid var(--blue-pale);pointer-events:none;}
-select option{background:#fff;color:var(--ink);}
-
-.radio-row{display:flex;gap:1rem;flex-wrap:wrap;}
-.radio-card{flex:1;min-width:130px;}
-.radio-card input[type="radio"]{display:none;}
-.radio-card label{display:flex;flex-direction:column;align-items:center;gap:.55rem;
-  padding:1.2rem 1rem;border:1px solid var(--blue-ghost);cursor:pointer;
-  transition:all .2s;background:rgba(26,58,122,.025);}
-.radio-label-text{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:.25em;
-  text-transform:uppercase;color:var(--blue-pale);transition:color .2s;}
-.radio-card input:checked+label{border-color:var(--blue);background:rgba(26,58,122,.07);box-shadow:inset 0 0 0 1px var(--blue);}
-.radio-card input:checked+label .radio-label-text{color:var(--blue);}
-.radio-card label:hover{border-color:var(--blue-lt);}
-
-.qr-section{border:1px solid var(--blue-ghost);padding:2.5rem 2rem;text-align:center;
-  margin-bottom:2rem;position:relative;background:rgba(26,58,122,.02);display:flex;flex-direction:column;align-items:center;}
-.qr-label{position:absolute;top:-.62rem;left:50%;transform:translateX(-50%);
-  background:var(--cream);padding:0 1rem;font-family:'Cinzel',serif;font-size:.48rem;
-  letter-spacing:.35em;text-transform:uppercase;color:var(--blue-mid);white-space:nowrap;}
-.qr-frame{width:190px;height:190px;margin:0 auto 1.2rem;padding:2px;background:#fff;
-  border:1px solid var(--blue-ghost);position:relative;display:block;margin-left:auto;margin-right:auto;}
-.qr-frame::before{content:'';position:absolute;top:-1px;left:-1px;width:16px;height:16px;border-top:2px solid var(--blue);border-left:2px solid var(--blue);}
-.qr-frame::after{content:'';position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border-bottom:2px solid var(--blue);border-right:2px solid var(--blue);}
-.qr-amt{font-family:'Playfair Display',serif;font-size:1.45rem;font-style:italic;color:var(--blue);margin-bottom:.28rem;}
-.qr-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.82rem;color:var(--blue-pale);}
-
-.upload-zone{border:1px dashed var(--blue-pale);padding:2.4rem 1.5rem;text-align:center;
-  cursor:pointer;position:relative;transition:all .2s;}
-.upload-zone:hover{border-color:var(--blue);background:rgba(26,58,122,.03);}
-.upload-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;border:none;padding:0;background:none;}
-.upload-icon{margin:0 auto .8rem;display:block;}
-.upload-title{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--blue-mid);margin-bottom:.38rem;}
-.upload-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.88rem;color:var(--blue-pale);}
-.file-chosen{margin-top:.75rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.92rem;color:var(--blue);}
-
-.submit-btn{width:100%;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.4em;text-transform:uppercase;
-  padding:1.3rem 2rem;background:var(--blue);color:var(--cream);border:none;cursor:pointer;
-  margin-top:1rem;box-shadow:3px 3px 0 var(--ink);transition:all .2s;position:relative;overflow:hidden;}
-.submit-btn::before{content:'';position:absolute;inset:-4px;border:1px solid var(--blue-lt);}
-.submit-btn:hover{background:var(--blue-mid);transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);}
-.submit-btn:active{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink);}
-
-.err{display:none;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.88rem;color:#6b1010;margin-top:.32rem;}
-input.is-err,select.is-err{border-bottom-color:#6b1010;}
-
-.success-pane{display:none;text-align:center;padding:4rem 2rem;}
-.success-pane h3{font-family:'Cinzel Decorative',serif;font-size:1.75rem;color:var(--blue);margin:1.5rem 0 1rem;font-weight:400;}
-.success-pane p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.08rem;color:var(--blue-mid);line-height:1.95;}
-
-footer{padding:3rem 2rem;text-align:center;border-top:1px solid var(--blue-ghost);position:relative;}
-footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.92rem;color:var(--blue-pale);letter-spacing:.1em;}
+footer{
+  padding:2.5rem 2rem;
+  text-align:center;
+  border-top:1px solid var(--blue-ghost);
+  background:var(--paper);
+}
+footer p{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:.9rem;
+  color:var(--blue-pale);
+  letter-spacing:.1em;
+}
 </style>
 </head>
 <body>
@@ -228,486 +223,107 @@ footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.92r
   <div class="nav-brand">CSE &nbsp;·&nbsp; AIML &nbsp;·&nbsp; AIDS &nbsp;·&nbsp; Farewell 2026</div>
 </nav>
 
-<!-- ══════════════ HERO ══════════════ -->
-<section class="hero">
-  <div class="hero-frame"></div>
+<main>
+  <div class="notice-wrap">
+    <div class="notice-card">
 
-  <!-- CORNER FLOURISHES -->
-  <svg class="corner corner-tl" viewBox="0 0 72 72" fill="none"><path d="M3 3L30 3" stroke="#4a78c4" stroke-width="1.5"/><path d="M3 3L3 30" stroke="#4a78c4" stroke-width="1.5"/><circle cx="3" cy="3" r="2.5" fill="#1a3a7a"/><circle cx="30" cy="3" r="1.5" fill="#4a78c4"/><circle cx="3" cy="30" r="1.5" fill="#4a78c4"/><path d="M3 3 L17 17" stroke="#8aaed8" stroke-width=".7" stroke-dasharray="2 3"/><path d="M8 8 Q17 5 17 17 Q5 17 8 8Z" stroke="#8aaed8" stroke-width=".7" fill="rgba(42,82,152,.07)"/><circle cx="17" cy="17" r="1" fill="#b8962e"/><path d="M13 3 Q15 8 19 8" stroke="#4a78c4" stroke-width=".7" fill="none"/><path d="M3 13 Q8 15 8 19" stroke="#4a78c4" stroke-width=".7" fill="none"/></svg>
-  <svg class="corner corner-tr" viewBox="0 0 72 72" fill="none"><path d="M3 3L30 3" stroke="#4a78c4" stroke-width="1.5"/><path d="M3 3L3 30" stroke="#4a78c4" stroke-width="1.5"/><circle cx="3" cy="3" r="2.5" fill="#1a3a7a"/><circle cx="30" cy="3" r="1.5" fill="#4a78c4"/><circle cx="3" cy="30" r="1.5" fill="#4a78c4"/><path d="M3 3 L17 17" stroke="#8aaed8" stroke-width=".7" stroke-dasharray="2 3"/><path d="M8 8 Q17 5 17 17 Q5 17 8 8Z" stroke="#8aaed8" stroke-width=".7" fill="rgba(42,82,152,.07)"/><circle cx="17" cy="17" r="1" fill="#b8962e"/></svg>
-  <svg class="corner corner-bl" viewBox="0 0 72 72" fill="none"><path d="M3 3L30 3" stroke="#4a78c4" stroke-width="1.5"/><path d="M3 3L3 30" stroke="#4a78c4" stroke-width="1.5"/><circle cx="3" cy="3" r="2.5" fill="#1a3a7a"/><circle cx="30" cy="3" r="1.5" fill="#4a78c4"/><circle cx="3" cy="30" r="1.5" fill="#4a78c4"/><path d="M3 3 L17 17" stroke="#8aaed8" stroke-width=".7" stroke-dasharray="2 3"/><path d="M8 8 Q17 5 17 17 Q5 17 8 8Z" stroke="#8aaed8" stroke-width=".7" fill="rgba(42,82,152,.07)"/></svg>
-  <svg class="corner corner-br" viewBox="0 0 72 72" fill="none"><path d="M3 3L30 3" stroke="#4a78c4" stroke-width="1.5"/><path d="M3 3L3 30" stroke="#4a78c4" stroke-width="1.5"/><circle cx="3" cy="3" r="2.5" fill="#1a3a7a"/><circle cx="30" cy="3" r="1.5" fill="#4a78c4"/><circle cx="3" cy="30" r="1.5" fill="#4a78c4"/><path d="M3 3 L17 17" stroke="#8aaed8" stroke-width=".7" stroke-dasharray="2 3"/><path d="M8 8 Q17 5 17 17 Q5 17 8 8Z" stroke="#8aaed8" stroke-width=".7" fill="rgba(42,82,152,.07)"/></svg>
-
-  <!-- SIDE BOTANICAL DECORATIONS -->
-  <svg class="side-deco side-deco-l" viewBox="0 0 160 500" fill="none">
-    <path d="M80 490 C76 440 72 380 78 320 C84 270 74 220 78 165 C82 110 70 62 76 18" stroke="#1a3a7a" stroke-width="1.8" fill="none"/>
-    <path d="M78 420 C52 400 26 390 14 368 C38 371 62 382 78 402Z" fill="#1a3a7a" opacity="0.45"/>
-    <path d="M78 420 C62 410 50 397 46 380" stroke="#2a5298" stroke-width=".7" fill="none"/>
-    <path d="M76 352 C44 330 16 315 4 290 C30 297 58 314 76 336Z" fill="#1a3a7a" opacity="0.4"/>
-    <path d="M78 278 C48 258 22 240 10 214 C36 224 62 242 78 264Z" fill="#1a3a7a" opacity="0.38"/>
-    <path d="M80 390 C106 370 132 360 146 338 C124 341 100 352 80 372Z" fill="#1a3a7a" opacity="0.45"/>
-    <path d="M79 318 C108 298 134 284 148 260 C124 268 100 284 79 306Z" fill="#1a3a7a" opacity="0.4"/>
-    <path d="M78 244 C105 224 128 206 140 182 C118 192 96 208 78 230Z" fill="#1a3a7a" opacity="0.38"/>
-    <path d="M76 175 C102 152 124 133 136 108 C115 118 94 136 76 158Z" fill="#1a3a7a" opacity="0.35"/>
-    <path d="M74 108 C52 83 34 64 22 38 C44 50 62 68 74 92Z" fill="#1a3a7a" opacity="0.3"/>
-    <circle cx="76" cy="18" r="7" fill="none" stroke="#1a3a7a" stroke-width="1.1"/>
-    <circle cx="76" cy="18" r="2.8" fill="#1a3a7a" opacity="0.6"/>
-    <path d="M76 11 L76 7 M69 15 L66 12 M83 15 L86 12 M72 23 L70 26 M80 23 L82 26" stroke="#1a3a7a" stroke-width=".9"/>
-    <!-- small constellation dots -->
-    <circle cx="100" cy="200" r="1.5" fill="#b8962e" opacity="0.5"/>
-    <circle cx="110" cy="230" r="1" fill="#b8962e" opacity="0.4"/>
-    <circle cx="105" cy="260" r="1.2" fill="#b8962e" opacity="0.4"/>
-  </svg>
-
-  <svg class="side-deco side-deco-r" viewBox="0 0 160 500" fill="none">
-    <path d="M80 490 C76 440 72 380 78 320 C84 270 74 220 78 165 C82 110 70 62 76 18" stroke="#1a3a7a" stroke-width="1.8" fill="none"/>
-    <path d="M78 420 C52 400 26 390 14 368 C38 371 62 382 78 402Z" fill="#1a3a7a" opacity="0.45"/>
-    <path d="M76 352 C44 330 16 315 4 290 C30 297 58 314 76 336Z" fill="#1a3a7a" opacity="0.4"/>
-    <path d="M78 278 C48 258 22 240 10 214 C36 224 62 242 78 264Z" fill="#1a3a7a" opacity="0.38"/>
-    <path d="M80 390 C106 370 132 360 146 338 C124 341 100 352 80 372Z" fill="#1a3a7a" opacity="0.45"/>
-    <path d="M79 318 C108 298 134 284 148 260 C124 268 100 284 79 306Z" fill="#1a3a7a" opacity="0.4"/>
-    <path d="M78 244 C105 224 128 206 140 182 C118 192 96 208 78 230Z" fill="#1a3a7a" opacity="0.38"/>
-    <path d="M76 175 C102 152 124 133 136 108 C115 118 94 136 76 158Z" fill="#1a3a7a" opacity="0.35"/>
-    <circle cx="76" cy="18" r="7" fill="none" stroke="#1a3a7a" stroke-width="1.1"/>
-    <circle cx="76" cy="18" r="2.8" fill="#1a3a7a" opacity="0.6"/>
-    <path d="M76 11 L76 7 M69 15 L66 12 M83 15 L86 12 M72 23 L70 26 M80 23 L82 26" stroke="#1a3a7a" stroke-width=".9"/>
-  </svg>
-
-  <!-- TOP ARCH BANNER -->
-  <svg style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(700px,96vw);pointer-events:none" viewBox="0 0 700 110" fill="none">
-    <line x1="0" y1="108" x2="700" y2="108" stroke="#4a78c4" stroke-width=".6" opacity=".4"/>
-    <path d="M0 108 C50 72 100 52 150 47 C190 43 220 54 255 47 C280 42 295 30 320 24" stroke="#1a3a7a" stroke-width="1.1" fill="none" opacity=".45"/>
-    <path d="M700 108 C650 72 600 52 550 47 C510 43 480 54 445 47 C420 42 405 30 380 24" stroke="#1a3a7a" stroke-width="1.1" fill="none" opacity=".45"/>
-    <!-- rosette -->
-    <circle cx="350" cy="22" r="18" fill="none" stroke="#4a78c4" stroke-width="1" opacity=".5"/>
-    <circle cx="350" cy="22" r="12" fill="none" stroke="#b8962e" stroke-width=".7" opacity=".5"/>
-    <circle cx="350" cy="22" r="5" fill="#4a78c4" opacity=".3"/>
-    <path d="M350 4 L352 12 L350 8 L348 12Z" fill="#4a78c4" opacity=".4"/>
-    <path d="M350 40 L352 32 L350 36 L348 32Z" fill="#4a78c4" opacity=".4"/>
-    <path d="M332 22 L340 24 L336 22 L340 20Z" fill="#4a78c4" opacity=".4"/>
-    <path d="M368 22 L360 24 L364 22 L360 20Z" fill="#4a78c4" opacity=".4"/>
-    <!-- dots on garland -->
-    <circle cx="150" cy="47" r="2.5" fill="#4a78c4" opacity=".4"/>
-    <circle cx="220" cy="52" r="2" fill="#4a78c4" opacity=".4"/>
-    <circle cx="550" cy="47" r="2.5" fill="#4a78c4" opacity=".4"/>
-    <circle cx="480" cy="52" r="2" fill="#4a78c4" opacity=".4"/>
-  </svg>
-
-  <!-- BOTTOM FLOURISH (urn / torch) -->
-  <svg style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(700px,96vw);pointer-events:none" viewBox="0 0 700 85" fill="none">
-    <line x1="0" y1="2" x2="700" y2="2" stroke="#4a78c4" stroke-width=".6" opacity=".4"/>
-    <path d="M0 2 C35 2 55 18 64 35 C72 48 68 62 82 68 C96 73 110 63 122 52" stroke="#1a3a7a" stroke-width="1.1" fill="none" opacity=".4"/>
-    <path d="M700 2 C665 2 645 18 636 35 C628 48 632 62 618 68 C604 73 590 63 578 52" stroke="#1a3a7a" stroke-width="1.1" fill="none" opacity=".4"/>
-    <!-- urn -->
-    <path d="M338 82 L362 82 L357 56 L352 50 L348 56Z" fill="#2a5298" opacity=".25"/>
-    <path d="M340 56 L360 56 L358 46 L342 46Z" fill="#2a5298" opacity=".25"/>
-    <ellipse cx="350" cy="46" rx="10" ry="4" fill="#2a5298" opacity=".25"/>
-    <path d="M350 46 C346 38 348 30 350 24 C352 30 354 38 350 46Z" fill="#4a78c4" opacity=".35"/>
-    <path d="M350 82 L120 82 Q160 60 200 58 Q240 56 280 65 Q310 72 338 82Z" fill="#1a3a7a" opacity=".07"/>
-    <path d="M350 82 L580 82 Q540 60 500 58 Q460 56 420 65 Q390 72 362 82Z" fill="#1a3a7a" opacity=".07"/>
-  </svg>
-
-  <div class="hero-content">
-    <div class="dept-chip"><span></span>Department of Computer Science<span></span></div>
-    <div class="hero-sub">CSE &nbsp;·&nbsp; AIML &nbsp;·&nbsp; AIDS</div>
-    <h1 class="hero-title">Farewell</h1>
-    <div class="hero-year">2 · 0 · 2 · 6</div>
-
-    <div class="rule-wrap">
-      <svg viewBox="0 0 580 26" fill="none" style="width:100%">
-        <line x1="0" y1="13" x2="200" y2="13" stroke="#8aaed8" stroke-width=".75"/>
-        <line x1="0" y1="13" x2="160" y2="13" stroke="#4a78c4" stroke-width="1.5"/>
-        <path d="M200 13 L218 6 L228 13 L218 20Z" fill="none" stroke="#8aaed8" stroke-width=".8"/>
-        <path d="M228 13 L246 4 L260 13 L246 22Z" fill="rgba(42,82,152,.12)" stroke="#4a78c4" stroke-width="1"/>
-        <circle cx="290" cy="13" r="9" fill="none" stroke="#b8962e" stroke-width="1"/>
-        <circle cx="290" cy="13" r="5" fill="none" stroke="#4a78c4" stroke-width=".7"/>
-        <circle cx="290" cy="13" r="2.5" fill="#b8962e"/>
-        <path d="M290 4 L290 1 M290 22 L290 25 M281 13 L278 13 M299 13 L302 13" stroke="#b8962e" stroke-width=".7"/>
-        <path d="M320 13 L334 4 L348 13 L334 22Z" fill="rgba(42,82,152,.12)" stroke="#4a78c4" stroke-width="1"/>
-        <path d="M348 13 L358 6 L376 13 L358 20Z" fill="none" stroke="#8aaed8" stroke-width=".8"/>
-        <line x1="376" y1="13" x2="580" y2="13" stroke="#8aaed8" stroke-width=".75"/>
-        <line x1="420" y1="13" x2="580" y2="13" stroke="#4a78c4" stroke-width="1.5"/>
+      <!-- Corner flourishes -->
+      <svg class="corner corner-tl" viewBox="0 0 60 60" fill="none">
+        <path d="M3 3L26 3" stroke="#4a78c4" stroke-width="1.5"/>
+        <path d="M3 3L3 26" stroke="#4a78c4" stroke-width="1.5"/>
+        <circle cx="3" cy="3" r="2.5" fill="#1a3a7a"/>
+        <path d="M3 3 L14 14" stroke="#8aaed8" stroke-width=".7" stroke-dasharray="2 3"/>
+        <path d="M7 7 Q14 5 14 14 Q5 14 7 7Z" stroke="#8aaed8" stroke-width=".7" fill="rgba(42,82,152,.07)"/>
+        <circle cx="14" cy="14" r="1" fill="#b8962e"/>
       </svg>
-    </div>
+      <svg class="corner corner-tr" viewBox="0 0 60 60" fill="none">
+        <path d="M3 3L26 3" stroke="#4a78c4" stroke-width="1.5"/>
+        <path d="M3 3L3 26" stroke="#4a78c4" stroke-width="1.5"/>
+        <circle cx="3" cy="3" r="2.5" fill="#1a3a7a"/>
+        <path d="M3 3 L14 14" stroke="#8aaed8" stroke-width=".7" stroke-dasharray="2 3"/>
+        <path d="M7 7 Q14 5 14 14 Q5 14 7 7Z" stroke="#8aaed8" stroke-width=".7" fill="rgba(42,82,152,.07)"/>
+        <circle cx="14" cy="14" r="1" fill="#b8962e"/>
+      </svg>
+      <svg class="corner corner-bl" viewBox="0 0 60 60" fill="none">
+        <path d="M3 3L26 3" stroke="#4a78c4" stroke-width="1.5"/>
+        <path d="M3 3L3 26" stroke="#4a78c4" stroke-width="1.5"/>
+        <circle cx="3" cy="3" r="2.5" fill="#1a3a7a"/>
+        <path d="M3 3 L14 14" stroke="#8aaed8" stroke-width=".7" stroke-dasharray="2 3"/>
+        <path d="M7 7 Q14 5 14 14 Q5 14 7 7Z" stroke="#8aaed8" stroke-width=".7" fill="rgba(42,82,152,.07)"/>
+      </svg>
+      <svg class="corner corner-br" viewBox="0 0 60 60" fill="none">
+        <path d="M3 3L26 3" stroke="#4a78c4" stroke-width="1.5"/>
+        <path d="M3 3L3 26" stroke="#4a78c4" stroke-width="1.5"/>
+        <circle cx="3" cy="3" r="2.5" fill="#1a3a7a"/>
+        <path d="M3 3 L14 14" stroke="#8aaed8" stroke-width=".7" stroke-dasharray="2 3"/>
+        <path d="M7 7 Q14 5 14 14 Q5 14 7 7Z" stroke="#8aaed8" stroke-width=".7" fill="rgba(42,82,152,.07)"/>
+      </svg>
 
-    <p class="hero-desc">Four years of building, breaking, and brilliance.<br>One event to honour it all.</p>
-    <a href="#register" class="v-btn blue">Register for Your Pass</a>
+      <div class="notice-eyebrow">
+        <span></span>Important Announcement<span></span>
+      </div>
 
-<div class="info-row">
-  <div class="info-cell"><span class="info-val">2026</span><span class="info-key">Batch</span></div>
-  <div class="info-cell"><span class="info-val">30 Apr</span><span class="info-key">Date</span></div>
-  <div class="info-cell"><span class="info-val">Limited</span><span class="info-key">Seats</span></div>
-  <div class="info-cell"><span class="info-val">Veg & NV</span><span class="info-key">Menu</span></div>
-  <div class="info-cell"><span class="info-val">₹ 600</span><span class="info-key">Pass</span></div>
-</div>
-  </div>
-</section>
-
-<!-- ══════════════ SECTION 2 ══════════════ -->
-<section class="section">
-  <!-- Halftone bg texture -->
-  <div class="sec-bg">
-    <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%"><defs><pattern id="hd" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="11" cy="11" r="1.3" fill="#1a3a7a"/></pattern></defs><rect width="1200" height="500" fill="url(#hd)"/></svg>
-  </div>
-
-  <div style="position:relative;z-index:2">
-    <div class="sec-badge">The Occasion</div>
-    <h2 class="sec-title">An Event <em>Compiled</em><br>in Gold</h2>
-    <p class="sec-body">From first-year labs to final-year memories, your journey in these halls has been extraordinary. Let us close this chapter together — in elegance, gratitude, and celebration.</p>
-
-    <!-- CIRCUIT / CONSTELLATION ILLUSTRATION -->
-    <svg viewBox="0 0 600 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;margin:0 auto 2.5rem;display:block">
-      <!-- decorative circuit paths -->
-      <path d="M20 80 L80 80 L80 40 L160 40 L160 80 L240 80 L240 50 L320 50 L320 80 L400 80 L400 40 L480 40 L480 80 L560 80 L560 120 L480 120 L480 80" stroke="#4a78c4" stroke-width=".75" fill="none" opacity=".4"/>
-      <path d="M20 80 L20 120 L100 120 L100 100 L180 100 L180 130 L260 130 L260 100 L340 100 L340 130 L420 130 L420 100 L500 100 L500 120 L580 120" stroke="#4a78c4" stroke-width=".75" fill="none" opacity=".3"/>
-      <!-- nodes -->
-      <circle cx="80" cy="80" r="4" fill="none" stroke="#4a78c4" stroke-width="1" opacity=".5"/><circle cx="80" cy="80" r="1.8" fill="#4a78c4" opacity=".5"/>
-      <circle cx="160" cy="80" r="4" fill="none" stroke="#4a78c4" stroke-width="1" opacity=".5"/><circle cx="160" cy="80" r="1.8" fill="#4a78c4" opacity=".5"/>
-      <circle cx="240" cy="80" r="4" fill="none" stroke="#4a78c4" stroke-width="1" opacity=".5"/><circle cx="240" cy="80" r="1.8" fill="#4a78c4" opacity=".5"/>
-      <circle cx="320" cy="80" r="5" fill="none" stroke="#b8962e" stroke-width="1.2" opacity=".6"/><circle cx="320" cy="80" r="2.5" fill="#b8962e" opacity=".6"/>
-      <circle cx="400" cy="80" r="4" fill="none" stroke="#4a78c4" stroke-width="1" opacity=".5"/><circle cx="400" cy="80" r="1.8" fill="#4a78c4" opacity=".5"/>
-      <circle cx="480" cy="80" r="4" fill="none" stroke="#4a78c4" stroke-width="1" opacity=".5"/><circle cx="480" cy="80" r="1.8" fill="#4a78c4" opacity=".5"/>
-      <!-- constellation stars -->
-      <path d="M50 30 L51.5 25 L53 30 L58 31.5 L53 33 L51.5 38 L50 33 L45 31.5Z" fill="#b8962e" opacity=".45"/>
-      <path d="M540 25 L541.5 20 L543 25 L548 26.5 L543 28 L541.5 33 L540 28 L535 26.5Z" fill="#b8962e" opacity=".45"/>
-      <path d="M280 18 L281.5 13 L283 18 L288 19.5 L283 21 L281.5 26 L280 21 L275 19.5Z" fill="#b8962e" opacity=".55"/>
-      <!-- Book / graduation at centre -->
-      <rect x="296" cy="60" x="296" y="55" width="48" height="38" rx="2" fill="none" stroke="#1a3a7a" stroke-width="1.2" opacity=".4"/>
-      <line x1="320" y1="55" x2="320" y2="93" stroke="#4a78c4" stroke-width=".75" opacity=".4"/>
-      <line x1="302" y1="65" x2="318" y2="66" stroke="#4a78c4" stroke-width=".6" opacity=".35"/>
-      <line x1="302" y1="72" x2="318" y2="73" stroke="#4a78c4" stroke-width=".6" opacity=".35"/>
-      <line x1="322" y1="65" x2="338" y2="64" stroke="#4a78c4" stroke-width=".6" opacity=".35"/>
-      <line x1="322" y1="72" x2="338" y2="71" stroke="#4a78c4" stroke-width=".6" opacity=".35"/>
-      <!-- Cap on book -->
-      <path d="M310 55 L320 50 L330 55 L320 60Z" fill="#1a3a7a" opacity=".35"/>
-      <line x1="320" y1="55" x2="320" y2="50" stroke="#1a3a7a" stroke-width=".75" opacity=".35"/>
-    </svg>
-
-    <div class="btn-pair" style="margin-top:2.5rem">
-      <a href="#register" class="v-btn blue">Reserve My Seat</a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ SECTION 3 ══════════════ -->
-<section class="section" style="background:linear-gradient(to bottom,transparent,rgba(200,216,238,.2),transparent)">
-  <!-- Vintage telescope / celestial illustration -->
-  <svg viewBox="0 0 600 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;margin:0 auto 2rem;display:block">
-    <!-- Horizon line -->
-    <line x1="0" y1="110" x2="600" y2="110" stroke="#8aaed8" stroke-width=".75" opacity=".4"/>
-    <!-- Telescope body -->
-    <path d="M220 70 L310 60 L310 80 L220 90Z" fill="#1a3a7a" opacity=".18" stroke="#2a5298" stroke-width="1"/>
-    <path d="M310 60 L380 52 L380 88 L310 80Z" fill="#1a3a7a" opacity=".14" stroke="#2a5298" stroke-width="1"/>
-    <path d="M380 52 L420 45 L420 95 L380 88Z" fill="#1a3a7a" opacity=".1" stroke="#2a5298" stroke-width="1"/>
-    <!-- Eyepiece -->
-    <rect x="208" y="74" width="16" height="12" rx="2" fill="#1a3a7a" opacity=".2" stroke="#4a78c4" stroke-width=".8"/>
-    <!-- Tripod -->
-    <line x1="265" y1="90" x2="240" y2="110" stroke="#1a3a7a" stroke-width="1.2" opacity=".25"/>
-    <line x1="265" y1="90" x2="265" y2="110" stroke="#1a3a7a" stroke-width="1.2" opacity=".25"/>
-    <line x1="265" y1="90" x2="290" y2="110" stroke="#1a3a7a" stroke-width="1.2" opacity=".25"/>
-    <!-- Stars in sky -->
-    <path d="M450 20 L451.5 15 L453 20 L458 21.5 L453 23 L451.5 28 L450 23 L445 21.5Z" fill="#b8962e" opacity=".5"/>
-    <path d="M500 40 L501 37 L502 40 L505 41 L502 42 L501 45 L500 42 L497 41Z" fill="#b8962e" opacity=".4"/>
-    <path d="M550 15 L551 12 L552 15 L555 16 L552 17 L551 20 L550 17 L547 16Z" fill="#b8962e" opacity=".4"/>
-    <circle cx="480" cy="55" r="3" fill="none" stroke="#b8962e" stroke-width=".75" opacity=".4"/>
-    <circle cx="530" cy="35" r="2" fill="none" stroke="#b8962e" stroke-width=".75" opacity=".35"/>
-    <!-- Moon -->
-    <path d="M560 30 C570 30 578 38 578 48 C578 58 570 65 560 65 C566 59 570 53 570 48 C570 43 566 36 560 30Z" fill="#4a78c4" opacity=".2"/>
-    <!-- Clouds -->
-    <path d="M30 75 Q50 60 70 65 Q85 55 100 62 Q115 55 130 62 Q145 55 160 65 Q180 60 200 75" stroke="#8aaed8" stroke-width=".8" fill="none" opacity=".3"/>
-    <path d="M400 100 Q420 88 440 92 Q455 82 470 90 Q485 82 500 90 Q515 85 530 98" stroke="#8aaed8" stroke-width=".8" fill="none" opacity=".3"/>
-  </svg>
-
-  <div class="sec-badge">Limited Capacity</div>
-  <h2 class="sec-title"><em>Don't</em> Let This Compile<br>Without You</h2>
-  <p class="sec-body">Seats are finite and allocated in order of registration. Secure yours before the final merge request is closed.</p>
-  <a href="#register" class="v-btn blue">Claim My Pass</a>
-</section>
-
-<!-- ══════════════ FORM ══════════════ -->
-<section class="section" id="register">
-  <div class="sec-badge">Registration</div>
-  <h2 class="sec-title">Your <em>Event Pass</em></h2>
-  <p class="sec-body" style="margin-bottom:3rem">Complete the form below and upload your payment confirmation to finalise your registration.</p>
-
-  <div class="form-outer">
-    <div class="form-inner">
-      <!-- Watermark illustration behind form -->
-      <div class="form-watermark">
-        <svg viewBox="0 0 640 700" fill="none" style="width:100%;height:100%">
-          <circle cx="320" cy="350" r="240" stroke="#1a3a7a" stroke-width="1.5"/>
-          <circle cx="320" cy="350" r="200" stroke="#1a3a7a" stroke-width=".75"/>
-          <circle cx="320" cy="350" r="160" stroke="#b8962e" stroke-width=".5"/>
-          <path d="M320 110 L325 170 L320 140 L315 170Z" fill="#1a3a7a"/>
-          <path d="M320 590 L325 530 L320 560 L315 530Z" fill="#1a3a7a"/>
-          <path d="M80 350 L140 355 L110 350 L140 345Z" fill="#1a3a7a"/>
-          <path d="M560 350 L500 355 L530 350 L500 345Z" fill="#1a3a7a"/>
-          <path d="M153 183 L196 218 L172 198 L207 212Z" fill="#1a3a7a"/>
-          <path d="M487 517 L444 482 L468 502 L433 488Z" fill="#1a3a7a"/>
-          <path d="M153 517 L196 482 L172 502 L207 488Z" fill="#1a3a7a"/>
-          <path d="M487 183 L444 218 L468 198 L433 212Z" fill="#1a3a7a"/>
-          <circle cx="320" cy="350" r="30" fill="none" stroke="#1a3a7a" stroke-width=".75"/>
-          <circle cx="320" cy="350" r="12" fill="#1a3a7a" opacity=".4"/>
+      <div class="icon-ring">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <path d="M18 4 L33 30 L3 30 Z" stroke="#8b1a1a" stroke-width="1.5" fill="rgba(139,26,26,.08)" stroke-linejoin="round"/>
+          <line x1="18" y1="14" x2="18" y2="22" stroke="#8b1a1a" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="18" cy="26" r="1.4" fill="#8b1a1a"/>
         </svg>
       </div>
 
-      <div class="form-heading">
-        <h2>Farewell Pass</h2>
-        <p>CSE · AIML · AIDS &nbsp;—&nbsp; Batch of 2026</p>
+      <div class="notice-title">Farewell Event Cancellation</div>
+      <div class="notice-subtitle">CSE &nbsp;·&nbsp; AIML &nbsp;·&nbsp; AIDS &nbsp;—&nbsp; April 30th, 2026</div>
+
+      <svg class="rule" viewBox="0 0 580 20" fill="none">
+        <line x1="0" y1="10" x2="220" y2="10" stroke="#c8d8ee" stroke-width=".75"/>
+        <path d="M220 10 L236 4 L244 10 L236 16Z" fill="none" stroke="#8aaed8" stroke-width=".8"/>
+        <circle cx="290" cy="10" r="6" fill="none" stroke="#b8962e" stroke-width="1"/>
+        <circle cx="290" cy="10" r="2.5" fill="#b8962e"/>
+        <path d="M336 10 L344 4 L360 10 L344 16Z" fill="none" stroke="#8aaed8" stroke-width=".8"/>
+        <line x1="360" y1="10" x2="580" y2="10" stroke="#c8d8ee" stroke-width=".75"/>
+      </svg>
+
+      <div class="notice-body">
+        <p>
+          We regret to inform you that the <strong>Farewell Event for CSE, AIML, and AIDS</strong>,
+          scheduled for <strong>April 30th</strong>, has been
+          <strong style="color:var(--red)">cancelled</strong> due to unforeseen circumstances
+          and a conflict of interest.
+        </p>
+        <p>
+          We sincerely apologise for any inconvenience this may have caused. We understand
+          how much this event meant to everyone and we share in your disappointment.
+        </p>
       </div>
 
-      <form id="regForm" novalidate>
-        <div class="form-group">
-          <label class="field-label" for="name">Full Name</label>
-          <input type="text" id="name" name="name" placeholder="As per college records"/>
-          <span class="err" id="nameErr">Please enter your full name</span>
-        </div>
-        <div class="form-group">
-          <label class="field-label" for="roll">Roll Number</label>
-          <input type="text" id="roll" name="roll" placeholder="e.g. 22B81A0501"/>
-          <span class="err" id="rollErr">Please enter your roll number</span>
-        </div>
-        <div class="form-group">
-  <label class="field-label" for="email">Email ID</label>
-  <input type="text" id="email" name="email" placeholder="your@email.com"/>
-  <span class="err" id="emailErr">Please enter a valid email</span>
-</div>
-
-<div class="form-group">
-  <label class="field-label" for="phone">Phone Number</label>
-  <input type="text" id="phone" name="phone" placeholder="10-digit number"/>
-  <span class="err" id="phoneErr">Please enter a valid phone number</span>
-</div>
-        <div class="form-group">
-          <label class="field-label" for="branch">Branch</label>
-          <div class="select-wrap">
-            <select id="branch" name="branch">
-              <option value="">— Select your branch —</option>
-              <option value="CSE">CSE</option>
-              <option value="AIML">CSE (AI & Machine Learning)</option>
-              <option value="AIDS">CSE (AI & Data Science)</option>
-            </select>
-          </div>
-          <span class="err" id="branchErr">Please select your branch</span>
-        </div>
-
-        <div class="form-group">
-          <label class="field-label">Year of Study</label>
-          <div class="radio-row">
-            <div class="radio-card">
-              <input type="radio" id="final" name="year" value="Final Year"/>
-              <label for="final">
-                <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M17 7L31 13L17 19L3 13Z" stroke="#4a78c4" stroke-width="1.2" fill="rgba(26,58,122,.07)"/><path d="M9 16L9 23Q17 27 25 23L25 16" stroke="#4a78c4" stroke-width="1.2" fill="none"/><line x1="31" y1="13" x2="31" y2="22" stroke="#4a78c4" stroke-width="1.2"/><circle cx="31" cy="23" r="1.5" fill="#4a78c4"/></svg>
-                <span class="radio-label-text">Final Year</span>
-              </label>
-            </div>
-            <div class="radio-card">
-              <input type="radio" id="prefinal" name="year" value="Pre-Final Year"/>
-              <label for="prefinal">
-                <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M6 6L6 28Q17 24 28 28L28 6Q17 10 6 6Z" stroke="#4a78c4" stroke-width="1.2" fill="rgba(26,58,122,.07)"/><line x1="17" y1="9" x2="17" y2="26" stroke="#8aaed8" stroke-width=".8"/><line x1="9" y1="12" x2="15" y2="13" stroke="#8aaed8" stroke-width=".8"/><line x1="9" y1="17" x2="15" y2="18" stroke="#8aaed8" stroke-width=".8"/><line x1="9" y1="22" x2="15" y2="23" stroke="#8aaed8" stroke-width=".8"/></svg>
-                <span class="radio-label-text">Pre-Final Year</span>
-              </label>
-            </div>
-          </div>
-          <span class="err" id="yearErr">Please select your year</span>
-        </div>
-
-        <div class="form-group">
-          <label class="field-label">Meal Preference</label>
-          <div class="radio-row">
-            <div class="radio-card">
-              <input type="radio" id="veg" name="meal" value="Vegetarian"/>
-              <label for="veg">
-                <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M17 28C17 28 6 21 6 13C6 7 10 4 17 4C24 4 28 7 28 13C28 21 17 28 17 28Z" stroke="#4a78c4" stroke-width="1.2" fill="rgba(26,58,122,.07)"/><line x1="17" y1="28" x2="17" y2="16" stroke="#4a78c4" stroke-width="1.2"/><path d="M17 18Q12 14 10 11" stroke="#8aaed8" stroke-width=".8" fill="none"/><path d="M17 22Q22 18 24 15" stroke="#8aaed8" stroke-width=".8" fill="none"/></svg>
-                <span class="radio-label-text">Vegetarian</span>
-              </label>
-            </div>
-            <div class="radio-card">
-              <input type="radio" id="nonveg" name="meal" value="Non-Vegetarian"/>
-              <label for="nonveg">
-                <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M12 5L12 15Q8 17 8 21L8 29" stroke="#4a78c4" stroke-width="1.2" fill="none"/><line x1="17" y1="5" x2="17" y2="29" stroke="#4a78c4" stroke-width="1.2"/><path d="M22 5C22 5 26 7 26 12C26 17 22 17 22 17L22 29" stroke="#4a78c4" stroke-width="1.2" fill="rgba(26,58,122,.07)"/><line x1="8" y1="15" x2="12" y2="15" stroke="#8aaed8" stroke-width=".8"/></svg>
-                <span class="radio-label-text">Non-Vegetarian</span>
-              </label>
-            </div>
-          </div>
-          <span class="err" id="mealErr">Please select your meal preference</span>
-        </div>
-
-        <div class="qr-section">
-          <span class="qr-label">Payment — Scan to Pay</span>
-          <div class="qr-frame">
-            <img src="cse_payment_qr.png" alt="Payment QR Code — BHARATPE2Y0B0R1H7I21764" style="width:100%;height:100%;object-fit:contain;display:block;"/>
-        </div>
-          <div class="qr-amt">₹ 600 &nbsp;per pass</div>
-          <div class="qr-hint">UPI ID: BHARATPE2Y0B0R1H7I21764@unitype</div>
-        </div>
-
-        <div class="form-group">
-          <label class="field-label">Payment Confirmation</label>
-          <div class="upload-zone">
-            <input type="file" id="screenshot" name="screenshot" accept="image/*,.pdf" onchange="handleFile(this)"/>
-            <svg class="upload-icon" width="42" height="42" viewBox="0 0 42 42" fill="none">
-              <rect x="4" y="26" width="34" height="12" rx="1" stroke="#4a78c4" stroke-width="1.2" fill="none"/>
-              <path d="M21 4L21 24" stroke="#4a78c4" stroke-width="1.2"/>
-              <path d="M14 11L21 4L28 11" stroke="#4a78c4" stroke-width="1.2" fill="none"/>
-              <rect x="31" y="29" width="3" height="3" fill="#b8962e"/>
-              <line x1="10" y1="24" x2="10" y2="26" stroke="#4a78c4" stroke-width="1" opacity=".4"/>
-              <line x1="32" y1="24" x2="32" y2="26" stroke="#4a78c4" stroke-width="1" opacity=".4"/>
-            </svg>
-            <div class="upload-title">Upload Screenshot or PDF</div>
-            <div class="upload-sub">Click to browse · JPG, PNG, PDF accepted</div>
-            <div class="file-chosen" id="fileName"></div>
-          </div>
-          <span class="err" id="fileErr">Please upload your payment screenshot</span>
-        </div>
-
-        <button type="submit" class="submit-btn">Submit Registration</button>
-      </form>
-
-      <div class="success-pane" id="successPane">
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin:0 auto;display:block">
-          <circle cx="32" cy="32" r="29" stroke="#1a3a7a" stroke-width="1.5"/>
-          <circle cx="32" cy="32" r="23" stroke="#4a78c4" stroke-width=".75"/>
-          <path d="M19 32L27 40L45 24" stroke="#1a3a7a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <h3>Registration Received</h3>
-        <p>Your pass is being reviewed.<br>Confirmation will be sent via your college contact.<br><br><em>We look forward to seeing you at Farewell 2026.</em></p>
+      <div class="refund-box">
+        <span class="refund-label">Refund Notice</span>
+        <p class="refund-text">
+          All individuals who have purchased passes will receive a
+          <strong>full refund</strong>. The refund process will be initiated shortly
+          and you will be contacted via your registered details.
+        </p>
       </div>
+
+      <div class="notice-sign">
+        The Farewell Committee &nbsp;·&nbsp; CSE · AIML · AIDS &nbsp;·&nbsp; 2026
+      </div>
+
     </div>
   </div>
-</section>
+</main>
 
 <footer>
-  <svg viewBox="0 0 420 24" fill="none" style="width:100%;max-width:420px;margin:0 auto 1.5rem;display:block">
-    <line x1="0" y1="12" x2="158" y2="12" stroke="#c8d8ee" stroke-width=".75"/>
-    <path d="M166 12L176 6L186 12L176 18Z" stroke="#4a78c4" stroke-width=".75" fill="none"/>
-    <circle cx="210" cy="12" r="5" stroke="#4a78c4" stroke-width=".75" fill="none"/>
-    <circle cx="210" cy="12" r="2" fill="#4a78c4"/>
-    <path d="M234 12L244 6L254 12L244 18Z" stroke="#4a78c4" stroke-width=".75" fill="none"/>
-    <line x1="262" y1="12" x2="420" y2="12" stroke="#c8d8ee" stroke-width=".75"/>
+  <svg viewBox="0 0 420 20" fill="none" style="width:100%;max-width:420px;margin:0 auto 1.2rem;display:block">
+    <line x1="0" y1="10" x2="158" y2="10" stroke="#c8d8ee" stroke-width=".75"/>
+    <path d="M166 10L176 4L186 10L176 16Z" stroke="#4a78c4" stroke-width=".75" fill="none"/>
+    <circle cx="210" cy="10" r="4" stroke="#4a78c4" stroke-width=".75" fill="none"/>
+    <circle cx="210" cy="10" r="1.8" fill="#4a78c4"/>
+    <path d="M234 10L244 4L254 10L244 16Z" stroke="#4a78c4" stroke-width=".75" fill="none"/>
+    <line x1="262" y1="10" x2="420" y2="10" stroke="#c8d8ee" stroke-width=".75"/>
   </svg>
   <p>CSE · AIML · AIDS &nbsp;·&nbsp; Farewell 2026 &nbsp;·&nbsp; Made with care by the Farewell Committee</p>
 </footer>
 
-<script>
-// ─── PASTE YOUR WEB APP URL HERE (ends in /exec) ─────────
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwWrcfmP_o7LrpBlE2rVzsqmzHI2gegIFKhmI4BBVBH9CuDGJ0zqhysnqqmPZ5N4zBSxQ/exec';
-// ─────────────────────────────────────────────────────────
-
-function handleFile(i) {
-  document.getElementById('fileName').textContent =
-    i.files[0] ? '✓ ' + i.files[0].name : '';
-}
-
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelector(a.getAttribute('href'))
-            ?.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-document.getElementById('regForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
-
-  // ── 1. Validate all fields ──────────────────────────
-  let ok = true;
-
-[
-  { id: 'name',  err: 'nameErr',  test: v => v.trim().length > 1 },
-  { id: 'roll',  err: 'rollErr',  test: v => v.trim().length > 2 },
-  { id: 'email', err: 'emailErr', test: v => /^\S+@\S+\.\S+$/.test(v) },
-  { id: 'phone', err: 'phoneErr', test: v => /^\d{10}$/.test(v) }
-].forEach(({ id, err, test }) => {
-  const el   = document.getElementById(id);
-  const pass = test(el.value);
-  document.getElementById(err).style.display = pass ? 'none' : 'block';
-  el.classList.toggle('is-err', !pass);
-  if (!pass) ok = false;
-});
-
-  const br  = document.getElementById('branch');
-  const bok = br.value !== '';
-  document.getElementById('branchErr').style.display = bok ? 'none' : 'block';
-  br.classList.toggle('is-err', !bok);
-  if (!bok) ok = false;
-
-  const yr = document.querySelector('input[name="year"]:checked');
-  document.getElementById('yearErr').style.display = yr ? 'none' : 'block';
-  if (!yr) ok = false;
-
-  const ml = document.querySelector('input[name="meal"]:checked');
-  document.getElementById('mealErr').style.display = ml ? 'none' : 'block';
-  if (!ml) ok = false;
-
-  const fi  = document.getElementById('screenshot');
-  const fok = fi.files && fi.files.length > 0;
-  document.getElementById('fileErr').style.display = fok ? 'none' : 'block';
-  if (!fok) ok = false;
-
-  if (!ok) return;
-
-  // ── 2. Loading state ────────────────────────────────
-  const btn        = document.querySelector('.submit-btn');
-  const origText   = btn.textContent;
-  btn.textContent  = 'Submitting…';
-  btn.disabled     = true;
-  btn.style.opacity = '0.7';
-
-  try {
-    // ── 3. Read file as base64 ─────────────────────────
-    const file      = fi.files[0];
-    const fileData  = await new Promise((res, rej) => {
-      const reader     = new FileReader();
-      reader.onload    = () => res(reader.result.split(',')[1]); // strip data-URL prefix
-      reader.onerror   = () => rej(new Error('Could not read file'));
-      reader.readAsDataURL(file);
-    });
-
-    // ── 4. Build JSON payload ──────────────────────────
-    const payload = {
-      dept    : 'CSE',
-      name    : document.getElementById('name').value.trim(),
-      roll    : document.getElementById('roll').value.trim(),
-      email   : document.getElementById('email').value.trim(),
-      phone   : document.getElementById('phone').value.trim(),
-      branch  : br.value,
-      year    : yr.value,
-      meal    : ml.value,
-      fileData,
-      fileName: file.name,
-      fileMime: file.type || 'image/jpeg',
-    };
-
-// ── 5. POST to Apps Script ─────────────────────────────
-const res  = await fetch(SCRIPT_URL, {
-  method : 'POST',
-  headers: { 'Content-Type': 'text/plain' },  // ← changed from application/json
-  body   : JSON.stringify(payload),
-});
-const data = await res.json();
-
-    if (data.success) {
-      document.getElementById('regForm').style.display   = 'none';
-      document.getElementById('successPane').style.display = 'block';
-      document.getElementById('successPane')
-              .scrollIntoView({ behavior: 'smooth' });
-    } else if (data.error === 'SOLD_OUT') {
-      alert('Sorry — all seats for CSE / AIML / AIDS are now taken.');
-      btn.textContent  = origText;
-      btn.disabled     = false;
-      btn.style.opacity = '1';
-    } else {
-      throw new Error(data.error || 'Unknown server error');
-    }
-
-  } catch (err) {
-    btn.textContent  = origText;
-    btn.disabled     = false;
-    btn.style.opacity = '1';
-    alert('Submission failed — please try again.\n\n' + err.message);
-  }
-});
-</script>
 </body>
 </html>
